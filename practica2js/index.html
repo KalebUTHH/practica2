@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Operaciones Básicas</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora Básica</h1>
+        <div class="input-group">
+            <input type="number" id="numero1" placeholder="Número 1"> 
+            <input type="number" id="numero2" placeholder="Número 2">
+        </div>
+        <div class="button-group">
+            <button onclick="calcular('+')">+</button>
+            <button onclick="calcular('-')">-</button>
+            <button onclick="calcular('*')">*</button>
+            <button onclick="calcular('/')">/</button>
+        </div>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcular(operacion) {
+            let num1 = parseFloat(document.getElementById('numero1').value);
+            let num2 = parseFloat(document.getElementById('numero2').value);
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = 'Por favor ingresa números válidos';
+            } else {
+                switch (operacion) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        if (num2 === 0) {
+                            result = 'No se puede dividir por cero';
+                        } else {
+                            result = num1 / num2;
+                        }
+                        break;
+                    default:
+                        result = 'La operación no es válida';
+                }
+            }
+            document.getElementById('resultado').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
